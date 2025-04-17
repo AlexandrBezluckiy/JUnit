@@ -13,8 +13,20 @@ public class Calc {
         return a - b;
     }
 
-    public int multiply(int a, int b) {
+    public int minus(String a, String b) {
+        int numA = Integer.parseInt(a);
+        int numB = Integer.parseInt(b);
+        return numA - numB;
+    }
+
+    public double multiply(double a, double b) {
         return a * b;
+    }
+
+    public double multiply(String a, String b) {
+        double numA = Double.parseDouble(a);
+        double numB = Double.parseDouble(b);
+        return numA * numB;
     }
 
     public double divide(double a, double b) {

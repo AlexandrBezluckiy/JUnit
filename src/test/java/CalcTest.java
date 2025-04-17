@@ -2,6 +2,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalcTest {
@@ -48,20 +49,18 @@ class CalcTest {
 
     @Test
     public void whenInputIncorrectValueThenThrowExceptionWithBooleanVariableCompare() {
-        boolean expected = true;
-        boolean actual = false;
+        boolean wasException = false;
         try {
             int num = calc.add("asd", "g5");
         } catch (Exception e) {
-            actual = true;
+            wasException = true;
         } finally {
-            assertEquals(expected, actual);
+            assertTrue(wasException);
         }
     }
 
-
     @Test
-    void minus() {
+    public void whenIncorrectInputNumsAsArgumentThenThrowExceptionMinusMethod() {
 
         int expected = 1;
         int actual = calc.minus(10, 9);
@@ -73,20 +72,44 @@ class CalcTest {
     }
 
     @Test
-    void multiply() {
-        Calc calc = new Calc();
-        int expected = 9;
-        int actual = calc.multiply(3, 3);
+    public void whenInputNumsAsStringArgumentMinusMethod() {
+        int expected = 1;
+        int actual = calc.minus("10", "9");
         assertEquals(expected, actual);
-
-        int expected2 = 0;
-        int actual2 = calc.multiply(4, 0);
-        assertEquals(expected2, actual2);
     }
 
     @Test
-    void divide() {
-        Calc calc = new Calc();
+    public void multiply() {
+        double expected = 9;
+        double actual = calc.multiply(3, 3);
+        assertEquals(expected, actual);
+
+        double expected1 = 18;
+        double actual1 = calc.multiply(6, 3);
+        assertEquals(expected1, actual1);
+    }
+
+    @Test
+    public void whenInputNumsAsStringArgumentMultipleMethod() {
+        double expected = 90;
+        double actual = calc.multiply("10", "9");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void whenInputWithIncorrectArgumentMultipleMethod() {
+        boolean wasException = false;
+        try {
+            calc.multiply("asd", "g5");
+        } catch (Exception e) {
+            wasException = true;
+        } finally {
+            assertTrue(wasException);
+        }
+    }
+
+    @Test
+    public void divide() {
         double expected = 1.5;
         double actual = calc.divide(3, 2);
         assertEquals(expected, actual, 0.000001);
@@ -98,7 +121,6 @@ class CalcTest {
 
     @Test
     void square() {
-        Calc calc = new Calc();
         int expected = 1;
         int actual = calc.square(1);
         assertEquals(expected, actual);
