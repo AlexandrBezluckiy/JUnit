@@ -46,6 +46,19 @@ class CalcTest {
         }
     }
 
+    @Test
+    public void whenInputIncorrectValueThenThrowExceptionWithBooleanVariableCompare() {
+        boolean expected = true;
+        boolean actual = false;
+        try {
+            int num = calc.add("asd", "g5");
+        } catch (Exception e) {
+            actual = true;
+        } finally {
+            assertEquals(expected, actual);
+        }
+    }
+
 
     @Test
     void minus() {
